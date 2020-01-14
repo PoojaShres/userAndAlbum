@@ -1,0 +1,8 @@
+
+export const ADD_MOVIE = "ADD_MOVIE";
+export const EDIT_MOVIE = "EDIT_MOVIE";
+export const DELETE_MOVIE = "DELETE_MOVIE";
+export const CLEAR_MOVIELIST = "CLEAR_MOVIELIST";
+export const DISPLAY_ARTISTS ="DISPLAY_ARTISTS";
+export const ARTIST_ALBUMS ="ARTIST_ALBUMS"
+export const DISPLAY_ALBUMS ="DISPLAY_ALBUMS"
