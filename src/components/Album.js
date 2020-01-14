@@ -17,12 +17,12 @@ const Album = props => {
         ))}
       </ul>
       <h3>ALBUMS AND USERS</h3>
-      <ul>
-             {props.userAlbums.map(user => (
-          <li key={user.id}>{user.userId + " "+ user.name + "=>   " }
+      {/* <ul>
+        {props.userAlbums.map(user => (
+          <li key={user.id}>{user.name}
           <li>{user.title}</li></li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };
@@ -31,11 +31,22 @@ const mapStateToProps = state => {
   return {
     users: state.movieReducer.users,
     albums: state.movieReducer.albums,
-    userAlbums: state.movieReducer.users.map(user=> {
-      const mergeUserAndAlbum = state.movieReducer.albums.find(album=> album.userId=== user.id)
-      return{...user, ...mergeUserAndAlbum}
+    // userAlbums: state.movieReducer.users.map(user=> {
+    //   const filteredAlbums = state.movieReducer.albums.filter(album=> album.userId === user.id)
+    //   return{
+    //     user,
+    //     albums: filteredAlbums
+    //   }
+    // })
+    userAlbums: state.movieReducer.users.map(function(user) {
+      const filteredAlbums = state.movieReducer.albums.filter(function(album) {
+        return album.userId === user.id;
+      });
+      return {
+        user: user,
+        albums: filteredAlbums,
+      };
     })
- 
 }}
 
 export default connect(mapStateToProps)(Album);
